@@ -21,6 +21,9 @@ while menu_option != "4":
     if menu_option == "1":
         user: User = create_new_user()
         print(user.greeting_message())
+        ## check if user name already exists
+        ## if true. Dont create a new one. Prompt the user that it is already registered
+        ## make the unit test
         users.append(user)
     elif menu_option == "2":
         filter_users(users)
