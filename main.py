@@ -1,5 +1,5 @@
 from typing import List
-from src.logic import create_new_user, filter_users, list_avengers
+from src.logic import create_new_user, filter_users, list_avengers, user_already_exists
 
 from src.user import User
 
@@ -21,10 +21,10 @@ while menu_option != "4":
     if menu_option == "1":
         user: User = create_new_user()
         print(user.greeting_message())
-        ## check if user name already exists
-        ## if true. Dont create a new one. Prompt the user that it is already registered
-        ## make the unit test
-        users.append(user)
+        if user_already_exists(users, user):
+            print("You are already registered")
+        else:
+            users.append(user)
     elif menu_option == "2":
         filter_users(users)
     elif menu_option == "3":

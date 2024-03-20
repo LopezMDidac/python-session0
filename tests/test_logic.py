@@ -1,5 +1,5 @@
 from typing import List
-from src.logic import filter_users, list_avengers, list_civilian
+from src.logic import filter_users, list_avengers, list_civilian, user_already_exists
 
 from src.user import User
 
@@ -34,3 +34,18 @@ def test_list_civilians_users_multiple(with_multiple_users):
 
     assert listed is not None
     assert len(listed) == 1
+
+
+def test_user_already_exists(with_multiple_users):
+
+    new_user = User("new user", 22, False)
+    exists = user_already_exists(with_multiple_users, new_user)
+
+    assert exists is False
+
+
+def test_user_already_exists_exsting(with_multiple_users):
+
+    exists = user_already_exists(with_multiple_users, with_multiple_users[0])
+
+    assert exists is True

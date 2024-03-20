@@ -42,3 +42,10 @@ def filter_users(
             continue
         print(user.name)
     return filtered_users
+
+
+def user_already_exists(users: List[User], new_user: User) -> bool:
+    for user in users:
+        if user.name == new_user.name:
+            return True
+    return False
